@@ -10,8 +10,10 @@ import json
 import os
 
 import pytest
-from mcp import ClientSession
-from mcp.client.streamable_http import streamablehttp_client
+
+pytest.importorskip("mcp")
+from mcp import ClientSession  # noqa: E402
+from mcp.client.streamable_http import streamablehttp_client  # noqa: E402
 
 from .test_bridge import WEBHOOK_ID, _cloudhook_call
 

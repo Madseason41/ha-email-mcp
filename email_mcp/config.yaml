@@ -12,8 +12,9 @@ arch:
 init: false
 # Used only to save a generated bearer token back into these options.
 hassio_api: true
-# Not published on the host. Home Assistant reaches it at
-# http://local-email-mcp:9560 on the internal network.
+# Not published on the host. A repository install is reached at
+# http://ba3d2a6a-email-mcp:9560. A local add-on copy uses
+# http://local-email-mcp:9560.
 ports:
   9560/tcp: null
 ports_description:

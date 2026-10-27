@@ -7,7 +7,9 @@ CONF_TOKEN = "token"
 CONF_WEBHOOK_ID = "webhook_id"
 CONF_CLOUDHOOK_INJECT = "cloudhook_inject_token"
 
-DEFAULT_URL = "http://local-email-mcp:9560"
+# Repository install (add-on store slug ba3d2a6a_email_mcp). A local
+# add-on copy is reached at http://local-email-mcp:9560 instead.
+DEFAULT_URL = "http://ba3d2a6a-email-mcp:9560"
 MCP_PATH = "/mcp"
 
 # Request headers relayed to the add-on (everything else is dropped).

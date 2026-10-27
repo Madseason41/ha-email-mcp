@@ -23,7 +23,7 @@ hacs.json                HACS metadata for the integration
 
 ## Install
 
-Home Assistant cannot install an add-on from a private GitHub repository. While this repository is private, copy `email_mcp` to `/addons/email_mcp` and `custom_components/email_mcp_bridge` to `/config/custom_components/`, then install the local add-on from the store. Making the repository public later lets you add `https://github.com/Madseason41/ha-email-mcp` as an add-on repository, and add the same URL in HACS as an integration. The full click-by-click steps are in the [documentation](email_mcp/DOCS.md).
+Home Assistant cannot install an add-on from a private GitHub repository. While this repository is private, copy `email_mcp` to `/addons/email_mcp` and `custom_components/email_mcp_bridge` to `/config/custom_components/`, then install the local add-on from the store. Making the repository public later lets you add `https://github.com/Madseason41/ha-email-mcp` as an add-on repository, and add the same URL in HACS as an integration. Installed from that repository, the add-on's internal address is `http://ba3d2a6a-email-mcp:9560`. A local copy under `/addons` is `http://local-email-mcp:9560`. The full click-by-click steps are in the [documentation](email_mcp/DOCS.md).
 
 ## Security
 

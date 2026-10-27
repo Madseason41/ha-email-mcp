@@ -1,0 +1,57 @@
+---
+name: Email MCP (iCloud / Yahoo)
+version: "0.1.0"
+slug: email_mcp
+description: >-
+  Read-only-by-default MCP server for iCloud, Yahoo, and other IMAP mail,
+  behind a bearer-token gate.
+url: https://github.com/Madseason41/ha-email-mcp
+arch:
+  - amd64
+# The upstream image already uses tini as its init.
+init: false
+# Used only to save a generated bearer token back into these options.
+hassio_api: true
+# Not published on the host. Home Assistant reaches it at
+# http://local-email-mcp:9560 on the internal network.
+ports:
+  9560/tcp: null
+ports_description:
+  9560/tcp: MCP endpoint (leave disabled; Home Assistant reaches it internally)
+options:
+  accounts: []
+  allow_send: false
+  allowed_recipients: []
+  allowed_senders: []
+  bearer_token: ""
+  enable_attachment_content: false
+  log_level: info
+  report_blocked_mutations: true
+schema:
+  accounts:
+    - name: "match(^[A-Za-z0-9_-]{1,32}$)"
+      email: email
+      full_name: "str?"
+      provider: "list(icloud|yahoo|custom)"
+      password: "password(1,)"
+      username: "str?"
+      smtp_username: "str?"
+      imap_host: "str?"
+      imap_port: "port?"
+      imap_security: "list(ssl|starttls|none)?"
+      smtp_host: "str?"
+      smtp_port: "port?"
+      smtp_security: "list(ssl|starttls|none)?"
+      verify_ssl: "bool?"
+      save_to_sent: "bool?"
+      drafts_mailbox: "str?"
+      sent_folder_name: "str?"
+  allow_send: bool
+  allowed_recipients:
+    - str
+  allowed_senders:
+    - str
+  bearer_token: password
+  enable_attachment_content: bool
+  log_level: "list(debug|info|warning|error)"
+  report_blocked_mutations: bool

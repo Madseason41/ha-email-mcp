@@ -9,7 +9,7 @@
           "token": "Bearer token"
         },
         "data_description": {
-          "url": "Usually http://local-email-mcp:9560. Do not publish that port on your network.",
+          "url": "Usually http://ba3d2a6a-email-mcp:9560. A local add-on copy uses http://local-email-mcp:9560. Do not publish that port on your network.",
           "token": "The bearer token from the add-on Configuration tab. Leave the add-on token blank on first start and it will fill one in for you."
         }
       },
@@ -21,7 +21,7 @@
           "token": "Bearer token"
         },
         "data_description": {
-          "url": "Usually http://local-email-mcp:9560.",
+          "url": "Usually http://ba3d2a6a-email-mcp:9560. A local add-on copy uses http://local-email-mcp:9560.",
           "token": "Paste the current bearer token from the add-on Configuration tab."
         }
       }
@@ -41,7 +41,7 @@
     "step": {
       "init": {
         "title": "Email MCP connector URLs (secret, do not share)",
-        "description": "In your MCP client, choose Streamable HTTP. Paste one of the addresses below as the server URL, and send the header `Authorization: Bearer <token>` using the add-on's bearer token.\n\n**Recommended (headers and streaming work):** {remote_ui_url}\n\n**Cloud webhook:** {cloudhook_url}\n\nLocal path, appended to any Home Assistant address: `{local_path}`\n\nThe cloud webhook may drop request headers, so the client cannot send the bearer token that way. Turn the option below on only if that is the case. The cloud webhook address then acts as the secret, and Home Assistant adds the token for you. A wrong token is still rejected. The remote address always requires the token.",
+        "description": "In your MCP client, choose Streamable HTTP. Paste one of the addresses below as the server URL, and send the header `Authorization: Bearer YOUR_TOKEN` using the add-on's bearer token.\n\n**Recommended (headers and streaming work):** {remote_ui_url}\n\n**Cloud webhook:** {cloudhook_url}\n\nLocal path, appended to any Home Assistant address: `{local_path}`\n\nThe cloud webhook may drop request headers, so the client cannot send the bearer token that way. Turn the option below on only if that is the case. The cloud webhook address then acts as the secret, and Home Assistant adds the token for you. A wrong token is still rejected. The remote address always requires the token.",
         "data": {
           "cloudhook_inject_token": "Cloud webhook: accept requests without Authorization (the address is the secret)"
         },

@@ -115,7 +115,7 @@ You can add a second account the same way.
 
 ### Network
 
-Leave port **9560** disabled (shown as blank / not exposed). Home Assistant Core reaches the add-on internally at `http://local-email-mcp:9560`. Turning the port on would publish it on the host.
+Leave port **9560** disabled (shown as blank / not exposed). Installed from this GitHub repository, Home Assistant Core reaches the add-on at `http://ba3d2a6a-email-mcp:9560`. Installed as a local add-on (copied into `/addons`), it is `http://local-email-mcp:9560`. Turning the port on would publish it on the host.
 
 ## Start the add-on and copy the token
 
@@ -133,7 +133,7 @@ The integration has no YAML setup. Every setting is in its dialogs.
 
 In the dialog:
 
-1. **Add-on URL:** `http://local-email-mcp:9560` (the suggested value).
+1. **Add-on URL:** `http://ba3d2a6a-email-mcp:9560` when the add-on was installed from this repository (the suggested value). Use `http://local-email-mcp:9560` if you copied the add-on into `/addons` and installed it as a local add-on.
 2. **Bearer token:** the token you copied from the add-on.
 
 The dialog checks the token with a live call. If it fails, the add-on is not running, the URL is wrong, or the token does not match.

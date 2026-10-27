@@ -43,7 +43,7 @@ UPSTREAM_TIMEOUT = aiohttp.ClientTimeout(total=None, connect=10, sock_connect=10
 class ProxyRuntime:
     """Per-entry state needed by the webhook handler."""
 
-    target_url: str  # http://local-email-mcp:9560/mcp
+    target_url: str  # http://ba3d2a6a-email-mcp:9560/mcp
     token: str
     session: aiohttp.ClientSession
     cloudhook_inject_token: bool = False

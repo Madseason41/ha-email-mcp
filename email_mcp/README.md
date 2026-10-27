@@ -10,7 +10,7 @@ Setup is entirely in the Home Assistant UI. The step-by-step guide is [DOCS.md](
 
 Only `amd64` is supported. There is no `image` key: Home Assistant builds the add-on from this Dockerfile when you install it. The upstream image is pinned by digest.
 
-The port is not published on the host. Home Assistant Core reaches it at `http://local-email-mcp:9560`. A companion integration, `email_mcp_bridge`, is in this repository and relays a Home Assistant webhook to that address, because Home Assistant Cloud does not forward add-on ports.
+The port is not published on the host. Installed from this repository, Home Assistant Core reaches it at `http://ba3d2a6a-email-mcp:9560`. A local add-on copy is reached at `http://local-email-mcp:9560`. A companion integration, `email_mcp_bridge`, is in this repository and relays a Home Assistant webhook to that address, because Home Assistant Cloud does not forward add-on ports.
 
 ## Configuration
 

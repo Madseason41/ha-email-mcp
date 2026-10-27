@@ -1,0 +1,6 @@
+---
+# Informational for builders that read build.yaml. The Dockerfile pins the
+# upstream image by digest and does not use BUILD_FROM, so a local Home
+# Assistant build cannot swap in a different base image.
+build_from:
+  amd64: ghcr.io/wh1isper/mcp-email-server:1.13.3

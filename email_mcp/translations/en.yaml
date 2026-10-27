@@ -1,0 +1,135 @@
+---
+configuration:
+  accounts:
+    name: Accounts
+    description: >-
+      One entry per mailbox. For iCloud or Yahoo, set the account name, email,
+      provider, and app password. Leave every other account field blank to use
+      that provider's servers.
+    fields:
+      name:
+        name: Account name
+        description: >-
+          Short id the assistant uses to pick this mailbox. Letters, digits,
+          underscores, and hyphens only, up to 32 characters. Example: icloud.
+      email:
+        name: Email address
+        description: >-
+          The full mailbox address, such as you@icloud.com or you@yahoo.com.
+      full_name:
+        name: Display name
+        description: >-
+          Name shown on mail you send. Leave blank to use the part of the
+          email address before the @.
+      provider:
+        name: Provider
+        description: >-
+          icloud and yahoo fill in the official servers for you. Choose custom
+          and set the IMAP host yourself for any other provider.
+      password:
+        name: App password
+        description: >-
+          An app password from Apple or Yahoo, or the password your provider
+          issued for mail apps. Never your normal Apple ID or Yahoo password.
+      username:
+        name: IMAP username
+        description: >-
+          Leave blank to sign in to IMAP with the email address. Set this only
+          if the provider expects a different login.
+      smtp_username:
+        name: SMTP username
+        description: >-
+          Leave blank to use the IMAP username for sending. Set this only when
+          outgoing mail uses a different login.
+      imap_host:
+        name: IMAP host
+        description: >-
+          Leave blank for an iCloud or Yahoo preset. Required when the
+          provider is custom.
+      imap_port:
+        name: IMAP port
+        description: >-
+          Leave blank to use the preset (993 for iCloud and Yahoo). Set a port
+          from 1 to 65535 only when you are overriding the server.
+      imap_security:
+        name: IMAP security
+        description: >-
+          Leave unset to use the preset. Otherwise choose ssl (implicit TLS),
+          starttls, or none. Use none only for a mail server on your own
+          network.
+      smtp_host:
+        name: SMTP host
+        description: >-
+          Leave blank for an iCloud or Yahoo preset. Leave blank on a custom
+          account to make it read-only (no outgoing server).
+      smtp_port:
+        name: SMTP port
+        description: >-
+          Leave blank to use the preset (587 for iCloud, 465 for Yahoo). Set a
+          port from 1 to 65535 only when you are overriding the server.
+      smtp_security:
+        name: SMTP security
+        description: >-
+          Leave unset to use the preset. Otherwise choose ssl, starttls, or
+          none. Use none only for a mail server on your own network.
+      verify_ssl:
+        name: Verify mail server certificate
+        description: >-
+          Leave unset to check the server certificate (the safe default). Turn
+          this off only for a server you trust that uses a private certificate.
+      save_to_sent:
+        name: Save sent mail to Sent
+        description: >-
+          Leave unset to keep a copy of sent mail in the Sent mailbox. Turn
+          this off to skip that copy. Applies only when sending is allowed.
+      drafts_mailbox:
+        name: Drafts mailbox
+        description: >-
+          Leave blank to let the mail server pick the Drafts folder. Set the
+          exact folder name only when drafts are saved somewhere else.
+      sent_folder_name:
+        name: Sent mailbox
+        description: >-
+          Leave blank to let the server find Sent. Set the exact folder name
+          only when the automatic choice is wrong.
+  allow_send:
+    name: Allow sending and drafts
+    description: >-
+      Off by default, which is read-only: no send, draft, move, delete, or
+      mark-as-read. On grants draft and send only, and sending still only goes
+      to addresses in Allowed recipients.
+  allowed_recipients:
+    name: Allowed recipients
+    description: >-
+      Exact addresses or globs such as *@example.com. Used only when sending
+      is allowed. An empty list blocks every recipient. A single asterisk
+      allows every recipient, which you should not use.
+  allowed_senders:
+    name: Allowed senders
+    description: >-
+      Optional From patterns, as exact addresses or globs. Leave this empty
+      to read mail from anyone. It does not by itself block reading.
+  bearer_token:
+    name: Bearer token
+    description: >-
+      Shared secret for the add-on and for your MCP client. Leave this empty
+      on first start and the add-on generates one, stores it privately, and
+      writes it back here (masked). If you set your own, use at least 32
+      characters.
+  enable_attachment_content:
+    name: Let the assistant read attachment contents
+    description: >-
+      Off by default. On lets a tool return attachment bytes to the assistant.
+      The add-on still never saves attachment files to disk.
+  log_level:
+    name: Log level
+    description: >-
+      How much the add-on writes to its log. Info is enough for normal use.
+      Secrets are not written at any level.
+  report_blocked_mutations:
+    name: Explain blocked actions
+    description: >-
+      On by default. The assistant is told which action was refused. Turn this
+      off for a quieter refusal that does not name the blocked messages.
+network:
+  9560/tcp: MCP endpoint (leave disabled; Home Assistant reaches it internally)

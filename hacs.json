@@ -1,0 +1,8 @@
+{
+  "name": "Email MCP Bridge",
+  "content_in_root": false,
+  "filename": "README.md",
+  "render_readme": true,
+  "homeassistant": "2025.1.0",
+  "domains": ["email_mcp_bridge"]
+}

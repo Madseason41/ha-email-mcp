@@ -1,6 +1,6 @@
 ---
 name: Email MCP (iCloud / Yahoo)
-version: "0.1.0"
+version: "0.1.1"
 slug: email_mcp
 description: >-
   Read-only-by-default MCP server for iCloud, Yahoo, and other IMAP mail,

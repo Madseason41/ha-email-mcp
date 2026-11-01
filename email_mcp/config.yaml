@@ -1,6 +1,6 @@
 ---
 name: Email MCP (iCloud / Yahoo)
-version: "0.1.0"
+version: "0.1.1"
 slug: email_mcp
 description: >-
   Read-only-by-default MCP server for iCloud, Yahoo, and other IMAP mail,
@@ -19,6 +19,9 @@ ports:
   9560/tcp: null
 ports_description:
   9560/tcp: MCP endpoint (leave disabled; Home Assistant reaches it internally)
+# Polled by the Supervisor when Watchdog is on. /healthz stays 200 only while
+# the proxy can get an answer from the upstream mail server.
+watchdog: "http://[HOST]:[PORT:9560]/healthz"
 options:
   accounts: []
   allow_send: false

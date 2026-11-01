@@ -19,7 +19,7 @@ ARG BUILD_DESCRIPTION="Read-only-by-default MCP server for iCloud, Yahoo, and ot
 ARG BUILD_NAME="Email MCP (iCloud / Yahoo)"
 ARG BUILD_REF
 ARG BUILD_REPOSITORY=Madseason41/ha-email-mcp
-ARG BUILD_VERSION=0.1.0
+ARG BUILD_VERSION=0.1.1
 
 LABEL \
     io.hass.name="${BUILD_NAME}" \
@@ -35,8 +35,10 @@ LABEL \
     org.opencontainers.image.revision="${BUILD_REF}" \
     org.opencontainers.image.created="${BUILD_DATE}"
 
-# /healthz is unauthenticated and only reports that the proxy process is up.
-HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+# /healthz is unauthenticated. After a short startup grace it returns 200 only
+# when the upstream mail server answers, so Docker and the Supervisor watchdog
+# can restart the add-on if that process stops responding.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
     CMD ["/app/.venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9560/healthz', timeout=3)"]
 
 ENTRYPOINT ["tini", "--", "/app/.venv/bin/python", "/opt/email_mcp/run.py"]

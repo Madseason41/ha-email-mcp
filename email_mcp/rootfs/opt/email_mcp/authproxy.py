@@ -57,7 +57,7 @@ _TIMEOUT = httpx.Timeout(connect=10.0, read=300.0, write=60.0, pool=5.0)
 # body that might be an SSE stream.
 _PROBE_TIMEOUT = httpx.Timeout(connect=2.0, read=2.0, write=2.0, pool=2.0)
 # Docker's HEALTHCHECK start-period covers boot. After this, /healthz reports
-# the upstream mail server, which is what the Supervisor watchdog polls.
+# the upstream mail server so a dead process fails the container health check.
 _STARTUP_GRACE_SECONDS = 20.0
 _UNAVAILABLE = b'{"error":"upstream unavailable"}'
 
@@ -213,7 +213,7 @@ class AuthProxy:
         path = scope["path"]
         if path == "/healthz" and method == "GET":
             # Immediate 200 during boot so a slow mail server cannot flap the
-            # watchdog. Afterwards a dead upstream is a real failure.
+            # container health check. Afterwards a dead upstream is a real failure.
             if (time.monotonic() - self._started) < _STARTUP_GRACE_SECONDS or await self._upstream_alive():
                 await self._send_simple(send, 200, b'{"status":"ok"}')
             else:
